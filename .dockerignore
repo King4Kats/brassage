@@ -1,0 +1,8 @@
+# Ce que Docker n'a PAS besoin de recevoir pour construire l'image
+# (ça accélère « docker compose build » et évite d'embarquer des fichiers lourds).
+**/node_modules
+app/js
+.cache
+roomvox-upstream
+.git
+docs

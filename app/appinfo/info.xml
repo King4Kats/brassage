@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!--
+  Carte d'identité de l'app pour Nextcloud.
+  Nextcloud lit ce fichier pour savoir : comment s'appelle l'app, sa version,
+  avec quelles versions de Nextcloud elle marche, et quel menu afficher.
+
+  ⚠ Version : Nextcloud ajoute « ?v=<version> » aux URL de nos JS/CSS.
+  Tant que la version ne bouge pas, le navigateur peut garder l'ANCIEN fichier
+  en cache. Le script scripts/deployer.sh fait donc un « occ upgrade » et on
+  pense à monter la version à chaque livraison.
+-->
+<info xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+    <id>brassage</id>
+    <name>Brassage</name>
+    <summary>Vue d'atelier animée au-dessus de RoomVox : qui utilise quelle cuve, pour quoi, et où en est le brassin</summary>
+    <description><![CDATA[
+Brassage s'appuie sur **RoomVox** (réservation de ressources par le calendrier) :
+chaque cuve, fermenteur ou alambic est une « salle » RoomVox qu'on réserve.
+
+Brassage ajoute par-dessus :
+* une vue « Atelier » animée (GSAP) de tout le matériel ;
+* l'avancement de chaque cuve (% du temps écoulé, jours restants, étape en cours) ;
+* le contenu de la cuve (bière, style, volume) et qui l'a réservée ;
+* un journal de mesures (densité, température, notes) ;
+* le suivi du nettoyage entre deux utilisations.
+    ]]></description>
+    <version>0.3.0</version>
+    <licence>agpl</licence>
+    <author>Association (démo)</author>
+    <namespace>Brassage</namespace>
+    <category>organization</category>
+    <dependencies>
+        <php min-version="8.2"/>
+        <!-- Mêmes bornes que RoomVox 1.6.x, puisqu'on dépend de lui. -->
+        <nextcloud min-version="32" max-version="35"/>
+    </dependencies>
+    <commands>
+        <command>OCA\Brassage\Command\DemoSeed</command>
+        <command>OCA\Brassage\Command\Menage</command>
+    </commands>
+    <navigations>
+        <navigation>
+            <name>Brassage</name>
+            <route>brassage.page.index</route>
+            <icon>app.svg</icon>
+        </navigation>
+    </navigations>
+</info>

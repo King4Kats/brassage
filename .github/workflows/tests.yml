@@ -1,0 +1,32 @@
+# Intégration continue : à chaque envoi (push) et à chaque pull request,
+# GitHub lance les tests sur une machine Linux neuve. Si un test échoue, le
+# commit est marqué d'une croix rouge sur GitHub et l'auteur reçoit un email.
+#
+# Deux étapes, comme en local :
+#   1. tests unitaires du calcul d'avancement (PHP seul, quelques secondes) ;
+#   2. tests d'API sur une installation neuve dans Docker (≈ 2 à 3 min).
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      # PHP 8.3 est déjà installé sur les machines Ubuntu de GitHub :
+      # tester.sh l'utilise directement, sans Docker.
+      - name: Tests unitaires (calcul d'avancement)
+        run: ./scripts/tester.sh
+
+      # Construit l'image, installe Nextcloud + Agenda + RoomVox + Brassage
+      # dans un conteneur jetable, puis lance tests/api/test_api.py.
+      # C'est aussi ce test qui détecte une mise à jour de RoomVox
+      # incompatible avec notre passerelle.
+      - name: Tests d'API (installation neuve)
+        run: ./scripts/tester-api.sh

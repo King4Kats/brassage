@@ -1,0 +1,19 @@
+# Dépendances et fichiers générés (recréés par npm install / npm run build)
+node_modules/
+app/js/
+
+# Téléchargements locaux
+.cache/
+
+# Copie de travail du code source de RoomVox, gardée pour l'étudier.
+# Ce n'est pas notre code : on le récupère depuis GitHub (voir docs).
+roomvox-upstream/
+
+# Divers
+.DS_Store
+Thumbs.db
+*.log
+
+# Cache Python (créé en lançant les tests)
+__pycache__/
+*.pyc

@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <!--
+    Cuve de garde réfrigérée — même style et même contrat d'animation que
+    alambic.svg (voir docs/03-front-et-animations.md).
+    Spécifique : #frost (cristaux de givre qui scintillent), #cooling-flow,
+                 #temp-display, #bottles (les bouteilles se remplissent
+                 pendant l'étape « Conditionnement »), #bottle-fill-1..4.
+  -->
+  <title id="title">Cuve de garde</title>
+  <desc id="desc">Cuve inox à double paroi réfrigérée, avec hublot, givre, groupe froid et bouteilles prêtes au conditionnement.</desc>
+  <defs>
+    <linearGradient id="steel" x1="0" x2="1">
+      <stop offset="0" stop-color="#263241"/><stop offset=".18" stop-color="#647386"/>
+      <stop offset=".34" stop-color="#d3dce4"/><stop offset=".52" stop-color="#697789"/>
+      <stop offset=".78" stop-color="#303d4c"/><stop offset="1" stop-color="#182331"/>
+    </linearGradient>
+    <linearGradient id="steelLight" x1="0" x2="1">
+      <stop offset="0" stop-color="#7f8c9b"/><stop offset=".25" stop-color="#e5ebef"/>
+      <stop offset=".55" stop-color="#9daab7"/><stop offset="1" stop-color="#536171"/>
+    </linearGradient>
+    <linearGradient id="copper" x1="0" x2="1">
+      <stop offset="0" stop-color="#a84720"/><stop offset=".2" stop-color="#f58b4b"/>
+      <stop offset=".42" stop-color="#ffc18a"/><stop offset=".62" stop-color="#d86a32"/>
+      <stop offset=".84" stop-color="#9e3d1c"/><stop offset="1" stop-color="#f28a4c"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffd34f"/><stop offset=".55" stop-color="#ffad16"/><stop offset="1" stop-color="#e87908"/>
+    </linearGradient>
+    <linearGradient id="bottleGlass" x1="0" x2="1">
+      <stop offset="0" stop-color="#2f5a3a"/><stop offset=".4" stop-color="#5b8f63"/><stop offset="1" stop-color="#244a2e"/>
+    </linearGradient>
+    <clipPath id="tankWindowClip"><circle cx="500" cy="420" r="65"/></clipPath>
+    <clipPath id="bottleClip">
+      <path d="M842 520 V500 Q842 490 850 486 V462 H866 V486 Q874 490 874 500 V520 V646 Q874 654 866 654 H850 Q842 654 842 646Z"/>
+    </clipPath>
+  </defs>
+
+  <path d="M45 681 H1150" fill="none" stroke="#dbe2e8" stroke-width="3" stroke-linecap="round"/>
+
+  <g id="cooling-pipes" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M650 250 H700 Q720 250 720 230 V170 Q720 150 740 150 H1010 Q1030 150 1030 170 V300" stroke="#344252" stroke-width="16"/>
+    <path id="cooling-flow" d="M650 250 H700 Q720 250 720 230 V170 Q720 150 740 150 H1010 Q1030 150 1030 170 V300" stroke="#5fb4ff" stroke-width="7" stroke-dasharray="14 18"/>
+  </g>
+
+  <!-- La cuve -->
+  <g id="main-vessel">
+    <g id="vessel-legs" fill="url(#steel)">
+      <path d="M380 590 L372 662 H398 L410 590Z"/><path d="M590 590 L602 662 H628 L620 590Z"/>
+      <rect x="360" y="659" width="48" height="12" rx="4"/><rect x="592" y="659" width="48" height="12" rx="4"/>
+    </g>
+    <path id="vessel-body" d="M350 190 Q350 120 500 116 Q650 120 650 190 V540 Q650 606 500 610 Q350 606 350 540Z" fill="url(#steel)" stroke="#253140" stroke-width="4"/>
+    <!-- Double paroi isolée -->
+    <path d="M372 196 Q372 142 500 138 Q628 142 628 196 V534 Q628 586 500 590 Q372 586 372 534Z" fill="none" stroke="#fff" stroke-opacity=".16" stroke-width="6" stroke-dasharray="2 16"/>
+    <g id="frost" fill="#e8f6ff">
+      <path d="M390 220 l6 -14 l6 14 l-6 14z"/><path d="M610 260 l5 -11 l5 11 l-5 11z"/>
+      <path d="M402 520 l5 -12 l5 12 l-5 12z"/><path d="M600 470 l6 -14 l6 14 l-6 14z"/>
+      <path d="M440 170 l4 -9 l4 9 l-4 9z"/><path d="M580 180 l4 -9 l4 9 l-4 9z"/>
+      <path d="M470 560 l4 -9 l4 9 l-4 9z"/><path d="M536 566 l5 -11 l5 11 l-5 11z"/>
+    </g>
+    <g id="vessel-window">
+      <circle cx="500" cy="420" r="80" fill="url(#steelLight)" stroke="#253140" stroke-width="4"/>
+      <circle cx="500" cy="420" r="68" fill="#172431" stroke="#e3e9ee" stroke-width="3"/>
+      <g clip-path="url(#tankWindowClip)">
+        <rect id="liquid-level" x="434" y="400" width="132" height="90" fill="url(#gold)" data-haut="355" data-bas="485"/>
+        <path id="liquid-surface" d="M420 400 Q432 394 444 400 T468 400 T492 400 T516 400 T540 400 T564 400 T588 400" fill="none" stroke="#fff0b2" stroke-width="4"/>
+        <g id="tank-bubbles" fill="none" stroke="#fff1b8" stroke-width="2">
+          <circle cx="480" cy="460" r="3"/><circle cx="520" cy="470" r="2.5"/>
+        </g>
+      </g>
+      <circle cx="500" cy="420" r="80" fill="none" stroke="url(#steelLight)" stroke-width="10"/>
+    </g>
+    <g id="gauges">
+      <g id="gauge-main" transform="translate(500 240)">
+        <circle r="29" fill="url(#steelLight)" stroke="#344252" stroke-width="4"/>
+        <circle r="22" fill="#f8fafb" stroke="#b6c1cb" stroke-width="2"/>
+        <path d="M-13 -12 L-17 -16 M0 -18 V-22 M14 -12 L18 -16" stroke="#2477d4" stroke-width="2"/>
+        <path id="gauge-main-needle" d="M0 3 L-11 -12" stroke="#263545" stroke-width="3.5" stroke-linecap="round"/>
+        <circle r="4" fill="#263545"/>
+      </g>
+    </g>
+    <g id="drain-valve" transform="translate(650 560)">
+      <path d="M0 0 H52" stroke="#344252" stroke-width="18" stroke-linecap="round"/>
+      <path d="M0 0 H52" stroke="url(#steelLight)" stroke-width="10" stroke-linecap="round"/>
+      <path d="M27 -10 V-28 M10 -30 H44" stroke="#2477d4" stroke-width="7" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <!-- Groupe froid -->
+  <g id="control-unit">
+    <rect x="960" y="300" width="150" height="140" rx="8" fill="url(#steel)" stroke="#263545" stroke-width="4"/>
+    <rect x="976" y="316" width="118" height="56" rx="4" fill="#172431" stroke="#9ba8b5" stroke-width="4"/>
+    <text id="temp-display" x="1035" y="355" text-anchor="middle" font-family="ui-monospace, monospace" font-size="30" font-weight="700" fill="#7fd0ff">2.0°</text>
+    <g id="status-lights">
+      <circle id="light-running" cx="990" cy="410" r="8" fill="#ffc52e" stroke="#ffe7a0" stroke-width="2"/>
+      <circle id="light-ready" cx="1035" cy="410" r="8" fill="#8ecf8a" stroke="#d4f2cb" stroke-width="2"/>
+      <circle id="light-idle" cx="1080" cy="410" r="8" fill="#647383" stroke="#b6c1cb" stroke-width="2"/>
+    </g>
+  </g>
+
+  <!-- Bouteilles (conditionnement) : on anime la hauteur de #bottle-fill-N -->
+  <g id="bottles">
+    <g transform="translate(0 0)">
+      <g clip-path="url(#bottleClip)"><rect id="bottle-fill-1" x="840" y="654" width="40" height="0" fill="url(#gold)"/></g>
+      <path d="M842 520 V500 Q842 490 850 486 V462 H866 V486 Q874 490 874 500 V520 V646 Q874 654 866 654 H850 Q842 654 842 646Z" fill="url(#bottleGlass)" fill-opacity=".45" stroke="#244a2e" stroke-width="3"/>
+    </g>
+    <g transform="translate(56 0)">
+      <g clip-path="url(#bottleClip)"><rect id="bottle-fill-2" x="840" y="654" width="40" height="0" fill="url(#gold)"/></g>
+      <path d="M842 520 V500 Q842 490 850 486 V462 H866 V486 Q874 490 874 500 V520 V646 Q874 654 866 654 H850 Q842 654 842 646Z" fill="url(#bottleGlass)" fill-opacity=".45" stroke="#244a2e" stroke-width="3"/>
+    </g>
+    <g transform="translate(112 0)">
+      <g clip-path="url(#bottleClip)"><rect id="bottle-fill-3" x="840" y="654" width="40" height="0" fill="url(#gold)"/></g>
+      <path d="M842 520 V500 Q842 490 850 486 V462 H866 V486 Q874 490 874 500 V520 V646 Q874 654 866 654 H850 Q842 654 842 646Z" fill="url(#bottleGlass)" fill-opacity=".45" stroke="#244a2e" stroke-width="3"/>
+    </g>
+    <g transform="translate(168 0)">
+      <g clip-path="url(#bottleClip)"><rect id="bottle-fill-4" x="840" y="654" width="40" height="0" fill="url(#gold)"/></g>
+      <path d="M842 520 V500 Q842 490 850 486 V462 H866 V486 Q874 490 874 500 V520 V646 Q874 654 866 654 H850 Q842 654 842 646Z" fill="url(#bottleGlass)" fill-opacity=".45" stroke="#244a2e" stroke-width="3"/>
+    </g>
+    <path d="M820 660 H1060" stroke="url(#steel)" stroke-width="12" stroke-linecap="round"/>
+  </g>
+</svg>

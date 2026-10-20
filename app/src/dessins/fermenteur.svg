@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <!--
+    Fermenteur cylindro-conique — même style et même « contrat d'animation »
+    que alambic.svg (voir docs/03-front-et-animations.md) :
+      #liquid-level (+ data-haut/data-bas), #liquid-surface, #tank-bubbles,
+      #gauge-main-needle, #light-running / #light-ready / #light-idle
+    Spécifique : #airlock-bubble (barboteur), #cooling-flow (circuit de froid),
+                 #temp-display (écran du groupe froid).
+  -->
+  <title id="title">Fermenteur cylindro-conique</title>
+  <desc id="desc">Cuve inox avec hublot vertical, barboteur, double enveloppe de refroidissement et groupe froid.</desc>
+  <defs>
+    <linearGradient id="steel" x1="0" x2="1">
+      <stop offset="0" stop-color="#263241"/><stop offset=".18" stop-color="#647386"/>
+      <stop offset=".34" stop-color="#d3dce4"/><stop offset=".52" stop-color="#697789"/>
+      <stop offset=".78" stop-color="#303d4c"/><stop offset="1" stop-color="#182331"/>
+    </linearGradient>
+    <linearGradient id="steelLight" x1="0" x2="1">
+      <stop offset="0" stop-color="#7f8c9b"/><stop offset=".25" stop-color="#e5ebef"/>
+      <stop offset=".55" stop-color="#9daab7"/><stop offset="1" stop-color="#536171"/>
+    </linearGradient>
+    <linearGradient id="copper" x1="0" x2="1">
+      <stop offset="0" stop-color="#a84720"/><stop offset=".2" stop-color="#f58b4b"/>
+      <stop offset=".42" stop-color="#ffc18a"/><stop offset=".62" stop-color="#d86a32"/>
+      <stop offset=".84" stop-color="#9e3d1c"/><stop offset="1" stop-color="#f28a4c"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffd34f"/><stop offset=".55" stop-color="#ffad16"/><stop offset="1" stop-color="#e87908"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" x2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".08"/><stop offset=".5" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity=".04"/>
+    </linearGradient>
+    <clipPath id="sightClip"><rect x="502" y="196" width="76" height="300" rx="34"/></clipPath>
+    <clipPath id="airlockClip"><path d="M626 58 Q608 58 608 76 Q608 94 626 94 Q644 94 644 76 Q644 58 626 58Z"/></clipPath>
+  </defs>
+
+  <path d="M45 681 H1150" fill="none" stroke="#dbe2e8" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Circuit de froid (derrière la cuve) : on anime stroke-dashoffset -->
+  <g id="cooling-pipes" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M690 260 H760 Q780 260 780 280 V500 Q780 520 800 520 H850" stroke="#344252" stroke-width="16"/>
+    <path id="cooling-flow" d="M690 260 H760 Q780 260 780 280 V500 Q780 520 800 520 H850" stroke="#5fb4ff" stroke-width="7" stroke-dasharray="14 18"/>
+    <path d="M690 420 H735 Q750 420 750 435 V560 Q750 575 765 575 H850" stroke="#344252" stroke-width="16"/>
+    <path d="M690 420 H735 Q750 420 750 435 V560 Q750 575 765 575 H850" stroke="url(#steelLight)" stroke-width="8"/>
+  </g>
+
+  <!-- La cuve -->
+  <g id="main-vessel">
+    <g id="vessel-legs" fill="url(#steel)">
+      <path d="M404 470 L380 662 H404 L436 500Z"/><path d="M676 470 L700 662 H676 L644 500Z"/>
+      <path d="M532 600 L528 662 H552 L548 600Z"/>
+      <rect x="368" y="659" width="48" height="12" rx="4"/><rect x="664" y="659" width="48" height="12" rx="4"/><rect x="516" y="659" width="48" height="12" rx="4"/>
+    </g>
+    <path id="vessel-body" d="M390 190 Q390 128 540 122 Q690 128 690 190 V470 L556 604 H524 L390 470Z" fill="url(#steel)" stroke="#253140" stroke-width="4"/>
+    <path d="M412 200 V462 M442 160 V478 M638 160 V478 M668 200 V462" stroke="#fff" stroke-opacity=".12" stroke-width="8"/>
+    <!-- Double enveloppe de refroidissement -->
+    <g id="cooling-jacket" fill="url(#copper)" stroke="#a94c25" stroke-width="3">
+      <rect x="386" y="236" width="308" height="16" rx="5"/>
+      <rect x="386" y="316" width="308" height="16" rx="5"/>
+      <rect x="386" y="396" width="308" height="16" rx="5"/>
+    </g>
+    <!-- Trou d'homme sur le dôme -->
+    <ellipse cx="540" cy="126" rx="62" ry="12" fill="url(#steelLight)" stroke="#344252" stroke-width="3"/>
+    <rect x="510" y="104" width="60" height="22" rx="6" fill="url(#steelLight)" stroke="#344252" stroke-width="3"/>
+
+    <!-- Hublot vertical (le liquide est dessiné dedans) -->
+    <g id="vessel-window">
+      <rect x="490" y="184" width="100" height="324" rx="44" fill="url(#steelLight)" stroke="#253140" stroke-width="4"/>
+      <rect x="502" y="196" width="76" height="300" rx="34" fill="#172431" stroke="#e3e9ee" stroke-width="3"/>
+      <g clip-path="url(#sightClip)">
+        <rect id="liquid-level" x="498" y="300" width="84" height="210" fill="url(#gold)" data-haut="196" data-bas="496"/>
+        <path id="liquid-surface" d="M480 300 Q492 294 504 300 T528 300 T552 300 T576 300 T600 300" fill="none" stroke="#fff0b2" stroke-width="4"/>
+        <g id="tank-bubbles" fill="none" stroke="#fff1b8" stroke-width="2.2">
+          <circle cx="522" cy="470" r="4"/><circle cx="548" cy="480" r="6"/><circle cx="562" cy="455" r="3"/>
+          <circle cx="530" cy="440" r="3"/><circle cx="556" cy="420" r="5"/>
+        </g>
+        <rect x="502" y="196" width="22" height="300" fill="url(#glass)"/>
+      </g>
+    </g>
+
+    <!-- Vanne de fond du cône -->
+    <g id="drain-valve" transform="translate(540 618)">
+      <path d="M0 -14 V12" stroke="#344252" stroke-width="16" stroke-linecap="round"/>
+      <path d="M0 -14 V12" stroke="url(#steelLight)" stroke-width="9" stroke-linecap="round"/>
+      <path d="M-26 0 H26" stroke="#2477d4" stroke-width="8" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <!-- Barboteur (laisse sortir le gaz carbonique sans laisser entrer l'air) -->
+  <g id="airlock">
+    <path d="M626 120 V96" stroke="url(#steelLight)" stroke-width="12" stroke-linecap="round"/>
+    <path d="M626 58 Q608 58 608 76 Q608 94 626 94 Q644 94 644 76 Q644 58 626 58Z" fill="#cfe7f5" fill-opacity=".35" stroke="#e3e9ee" stroke-width="3"/>
+    <g clip-path="url(#airlockClip)">
+      <rect x="606" y="78" width="40" height="20" fill="#9fd3f0" fill-opacity=".7"/>
+      <circle id="airlock-bubble" cx="626" cy="90" r="5" fill="#fff" fill-opacity=".9"/>
+    </g>
+    <rect x="618" y="48" width="16" height="12" rx="3" fill="url(#steelLight)" stroke="#344252" stroke-width="2"/>
+  </g>
+
+  <!-- Thermomètre à cadran -->
+  <g id="gauges">
+    <g id="gauge-main" transform="translate(440 280)">
+      <circle r="29" fill="url(#steelLight)" stroke="#344252" stroke-width="4"/>
+      <circle r="22" fill="#f8fafb" stroke="#b6c1cb" stroke-width="2"/>
+      <path d="M-13 -12 L-17 -16 M0 -18 V-22 M14 -12 L18 -16" stroke="#2477d4" stroke-width="2"/>
+      <path id="gauge-main-needle" d="M0 3 L11 -12" stroke="#263545" stroke-width="3.5" stroke-linecap="round"/>
+      <circle r="4" fill="#263545"/>
+    </g>
+  </g>
+
+  <!-- Groupe froid -->
+  <g id="control-unit">
+    <rect x="850" y="430" width="200" height="230" rx="10" fill="url(#steel)" stroke="#263545" stroke-width="4"/>
+    <rect x="870" y="450" width="160" height="62" rx="5" fill="#172431" stroke="#9ba8b5" stroke-width="4"/>
+    <text id="temp-display" x="950" y="493" text-anchor="middle" font-family="ui-monospace, monospace" font-size="34" font-weight="700" fill="#7fd0ff">18.5°</text>
+    <g fill="none" stroke="#9ba8b5" stroke-width="4" stroke-linecap="round">
+      <path d="M880 540 H1020 M880 560 H1020 M880 580 H1020 M880 600 H1020"/>
+    </g>
+    <g id="status-lights">
+      <circle id="light-running" cx="905" cy="635" r="8" fill="#ffc52e" stroke="#ffe7a0" stroke-width="2"/>
+      <circle id="light-ready" cx="950" cy="635" r="8" fill="#8ecf8a" stroke="#d4f2cb" stroke-width="2"/>
+      <circle id="light-idle" cx="995" cy="635" r="8" fill="#647383" stroke="#b6c1cb" stroke-width="2"/>
+    </g>
+    <path d="M870 660 V680 M1030 660 V680" stroke="url(#steel)" stroke-width="10"/>
+  </g>
+</svg>

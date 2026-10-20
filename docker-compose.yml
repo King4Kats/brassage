@@ -1,0 +1,49 @@
+# Démo « Brassage » : Nextcloud 32 + RoomVox + notre app, et Mailpit.
+#
+#   docker compose up --build        (le premier lancement prend 2-3 minutes)
+#
+#   Atelier : http://localhost:8097/apps/brassage/
+#   Mailpit : http://localhost:8026  (boîte de réception de test : tous les
+#             emails envoyés par Nextcloud/RoomVox arrivent ici, rien ne sort)
+#
+# Comptes : voir README.md. Repartir de zéro : docker compose down -v
+services:
+  nextcloud:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: brassage-demo:latest
+    container_name: brassage-nc
+    ports:
+      - "8097:80"
+    environment:
+      # SQLite : une base dans un simple fichier, rien à installer. Parfait
+      # pour une démo ; en production on prendrait PostgreSQL ou MariaDB.
+      SQLITE_DATABASE: nextcloud
+      NEXTCLOUD_ADMIN_USER: admin
+      NEXTCLOUD_ADMIN_PASSWORD: brassage2026
+      # Adresses par lesquelles on a le droit d'ouvrir Nextcloud. Pour tester
+      # depuis un autre PC du réseau, lancer par exemple :
+      #   BRASSAGE_DOMAINES="localhost 192.168.1.20" docker compose up --build
+      # ⚠ Pris en compte seulement à la PREMIÈRE installation. Ensuite :
+      #   docker exec -u www-data brassage-nc php occ config:system:set trusted_domains 2 --value=192.168.1.20
+      NEXTCLOUD_TRUSTED_DOMAINS: ${BRASSAGE_DOMAINES:-localhost 127.0.0.1}
+    volumes:
+      # Tout Nextcloud (code, config, données) dans un volume Docker nommé.
+      # Pas de dossier de l'ordinateur « monté » dans custom_apps : ça casse
+      # l'installation initiale (voir docs/journal-de-bord.md).
+      - nc_data:/var/www/html
+    depends_on:
+      - mailpit
+    restart: unless-stopped
+
+  mailpit:
+    # Version figée par empreinte, comme dans docker/Dockerfile.
+    image: axllent/mailpit:v1.27@sha256:e22dce5b36f93c77082e204a3942fb6b283b7896e057458400a4c88344c3df68
+    container_name: brassage-mail
+    ports:
+      - "8026:8025"
+    restart: unless-stopped
+
+volumes:
+  nc_data:

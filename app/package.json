@@ -1,0 +1,19 @@
+{
+  "name": "brassage",
+  "private": true,
+  "description": "Front de l'app Nextcloud Brassage : vue d'atelier animée (GSAP)",
+  "license": "AGPL-3.0-or-later",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "watch": "vite build --watch --mode development"
+  },
+  "dependencies": {
+    "@nextcloud/auth": "2.5.1",
+    "@nextcloud/router": "3.0.1",
+    "gsap": "3.13.0"
+  },
+  "devDependencies": {
+    "vite": "6.3.5"
+  }
+}

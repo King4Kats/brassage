@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <!--
+    Cuve de brassage (empâtage + ébullition) — même style et même contrat
+    d'animation que alambic.svg (voir docs/03-front-et-animations.md).
+    Spécifique : #steam (vapeur), #flames (brûleur), #paddle (fourquet qui
+                 brasse), #pump-rotor (pompe de recirculation), #recirc-flow.
+  -->
+  <title id="title">Cuve de brassage</title>
+  <desc id="desc">Cuve en cuivre et inox sur brûleur, avec hublot, fourquet, pompe de recirculation et sac de malt.</desc>
+  <defs>
+    <linearGradient id="steel" x1="0" x2="1">
+      <stop offset="0" stop-color="#263241"/><stop offset=".18" stop-color="#647386"/>
+      <stop offset=".34" stop-color="#d3dce4"/><stop offset=".52" stop-color="#697789"/>
+      <stop offset=".78" stop-color="#303d4c"/><stop offset="1" stop-color="#182331"/>
+    </linearGradient>
+    <linearGradient id="steelLight" x1="0" x2="1">
+      <stop offset="0" stop-color="#7f8c9b"/><stop offset=".25" stop-color="#e5ebef"/>
+      <stop offset=".55" stop-color="#9daab7"/><stop offset="1" stop-color="#536171"/>
+    </linearGradient>
+    <linearGradient id="copper" x1="0" x2="1">
+      <stop offset="0" stop-color="#a84720"/><stop offset=".2" stop-color="#f58b4b"/>
+      <stop offset=".42" stop-color="#ffc18a"/><stop offset=".62" stop-color="#d86a32"/>
+      <stop offset=".84" stop-color="#9e3d1c"/><stop offset="1" stop-color="#f28a4c"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffd34f"/><stop offset=".55" stop-color="#ffad16"/><stop offset="1" stop-color="#e87908"/>
+    </linearGradient>
+    <linearGradient id="flame" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#2f7bff"/><stop offset=".45" stop-color="#ffb02e"/><stop offset="1" stop-color="#ff5a1f" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="sack" x1="0" x2="1">
+      <stop offset="0" stop-color="#b9965f"/><stop offset=".5" stop-color="#e3c891"/><stop offset="1" stop-color="#a5824c"/>
+    </linearGradient>
+    <clipPath id="tankWindowClip"><circle cx="520" cy="440" r="65"/></clipPath>
+  </defs>
+
+  <path d="M45 681 H1150" fill="none" stroke="#dbe2e8" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Sac de malt -->
+  <g id="malt-sack">
+    <path d="M120 660 Q104 560 140 500 Q150 486 168 490 L236 490 Q254 486 264 500 Q300 560 284 660Z" fill="url(#sack)" stroke="#7d5f33" stroke-width="4"/>
+    <path d="M150 500 Q202 470 254 500" fill="none" stroke="#7d5f33" stroke-width="5"/>
+    <text x="202" y="600" text-anchor="middle" font-family="Georgia, serif" font-size="34" font-weight="700" fill="#6e5129">MALT</text>
+  </g>
+
+  <!-- Recirculation (on anime stroke-dashoffset de #recirc-flow) -->
+  <g id="recirc-pipes" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M700 560 H790 Q810 560 810 540 V250 Q810 230 790 230 H700" stroke="#344252" stroke-width="18"/>
+    <path id="recirc-flow" d="M700 560 H790 Q810 560 810 540 V250 Q810 230 790 230 H700" stroke="url(#gold)" stroke-width="9" stroke-dasharray="16 20"/>
+  </g>
+
+  <!-- Vapeur au-dessus de la cuve -->
+  <g id="steam" fill="#e9eef2">
+    <circle cx="450" cy="190" r="26" opacity=".7"/>
+    <circle cx="520" cy="170" r="32" opacity=".7"/>
+    <circle cx="590" cy="190" r="24" opacity=".7"/>
+    <circle cx="485" cy="140" r="20" opacity=".5"/>
+    <circle cx="560" cy="130" r="22" opacity=".5"/>
+  </g>
+
+  <!-- Brûleur -->
+  <g id="burner">
+    <g id="flames">
+      <path d="M380 640 Q392 600 404 640Z" fill="url(#flame)"/>
+      <path d="M430 640 Q442 594 454 640Z" fill="url(#flame)"/>
+      <path d="M480 640 Q492 598 504 640Z" fill="url(#flame)"/>
+      <path d="M530 640 Q542 592 554 640Z" fill="url(#flame)"/>
+      <path d="M580 640 Q592 600 604 640Z" fill="url(#flame)"/>
+      <path d="M630 640 Q642 596 654 640Z" fill="url(#flame)"/>
+    </g>
+    <rect x="350" y="640" width="340" height="22" rx="6" fill="url(#steel)" stroke="#263545" stroke-width="3"/>
+    <path d="M370 662 V680 M670 662 V680" stroke="url(#steel)" stroke-width="12"/>
+  </g>
+
+  <!-- La cuve -->
+  <g id="main-vessel">
+    <path id="vessel-body" d="M330 280 Q330 262 350 262 H690 Q710 262 710 282 V560 Q710 600 670 600 H370 Q330 600 330 560Z" fill="url(#copper)" stroke="#9e421f" stroke-width="4"/>
+    <path d="M352 284 V570 M384 274 V590 M656 274 V590 M688 284 V570" stroke="#fff" stroke-opacity=".16" stroke-width="8"/>
+    <path id="vessel-rim" d="M320 268 Q320 252 336 252 H704 Q720 252 720 268 V280 H320Z" fill="url(#steelLight)" stroke="#344252" stroke-width="3"/>
+    <!-- Fourquet (la grande pale qui brasse) -->
+    <g id="paddle">
+      <path d="M600 150 L560 360" stroke="#7d5f33" stroke-width="12" stroke-linecap="round"/>
+      <rect x="586" y="128" width="30" height="34" rx="8" fill="#5b4123"/>
+    </g>
+    <g id="vessel-window">
+      <circle cx="520" cy="440" r="80" fill="url(#steelLight)" stroke="#253140" stroke-width="4"/>
+      <circle cx="520" cy="440" r="68" fill="#172431" stroke="#e3e9ee" stroke-width="3"/>
+      <g clip-path="url(#tankWindowClip)">
+        <rect id="liquid-level" x="454" y="430" width="132" height="80" fill="url(#gold)" data-haut="375" data-bas="505"/>
+        <path id="liquid-surface" d="M440 430 Q452 424 464 430 T488 430 T512 430 T536 430 T560 430 T584 430 T608 430" fill="none" stroke="#fff0b2" stroke-width="4"/>
+        <g id="tank-bubbles" fill="none" stroke="#fff1b8" stroke-width="2.2">
+          <circle cx="498" cy="470" r="5"/><circle cx="537" cy="482" r="7"/><circle cx="555" cy="462" r="3"/><circle cx="512" cy="450" r="4"/>
+        </g>
+      </g>
+      <circle cx="520" cy="440" r="80" fill="none" stroke="url(#steelLight)" stroke-width="10"/>
+      <g fill="#354252" stroke="#c9d2dc" stroke-width="1.5">
+        <circle cx="520" cy="367" r="4"/><circle cx="572" cy="388" r="4"/><circle cx="593" cy="440" r="4"/><circle cx="572" cy="492" r="4"/>
+        <circle cx="520" cy="513" r="4"/><circle cx="468" cy="492" r="4"/><circle cx="447" cy="440" r="4"/><circle cx="468" cy="388" r="4"/>
+      </g>
+    </g>
+    <g id="gauges">
+      <g id="gauge-main" transform="translate(390 330)">
+        <circle r="29" fill="url(#steelLight)" stroke="#344252" stroke-width="4"/>
+        <circle r="22" fill="#f8fafb" stroke="#b6c1cb" stroke-width="2"/>
+        <path d="M-13 -12 L-17 -16 M0 -18 V-22 M14 -12 L18 -16" stroke="#c74b36" stroke-width="2"/>
+        <path id="gauge-main-needle" d="M0 3 L11 -12" stroke="#263545" stroke-width="3.5" stroke-linecap="round"/>
+        <circle r="4" fill="#263545"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- Pompe de recirculation -->
+  <g id="pump" transform="translate(870 560)">
+    <circle r="46" fill="url(#steel)" stroke="#263545" stroke-width="4"/>
+    <circle r="30" fill="#172431" stroke="#9ba8b5" stroke-width="3"/>
+    <g id="pump-rotor" stroke="#dbe2e8" stroke-width="6" stroke-linecap="round">
+      <path d="M0 -22 V22 M-22 0 H22"/>
+    </g>
+    <path d="M-60 0 H-46" stroke="#344252" stroke-width="18"/>
+    <path d="M-30 50 V120 M30 50 V120" stroke="url(#steel)" stroke-width="10"/>
+  </g>
+
+  <!-- Boîtier de commande -->
+  <g id="control-unit">
+    <rect x="960" y="480" width="150" height="180" rx="8" fill="url(#steel)" stroke="#263545" stroke-width="4"/>
+    <rect x="976" y="496" width="118" height="58" rx="4" fill="#172431" stroke="#9ba8b5" stroke-width="4"/>
+    <text id="temp-display" x="1035" y="536" text-anchor="middle" font-family="ui-monospace, monospace" font-size="30" font-weight="700" fill="#ffc52e">66°</text>
+    <g id="status-lights">
+      <circle id="light-running" cx="990" cy="630" r="8" fill="#ffc52e" stroke="#ffe7a0" stroke-width="2"/>
+      <circle id="light-ready" cx="1035" cy="630" r="8" fill="#8ecf8a" stroke="#d4f2cb" stroke-width="2"/>
+      <circle id="light-idle" cx="1080" cy="630" r="8" fill="#647383" stroke="#b6c1cb" stroke-width="2"/>
+    </g>
+    <path d="M975 660 V680 M1095 660 V680" stroke="url(#steel)" stroke-width="10"/>
+  </g>
+</svg>

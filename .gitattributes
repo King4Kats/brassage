@@ -1,0 +1,4 @@
+# Les scripts shell sont exécutés dans un conteneur Linux : ils doivent garder
+# des fins de ligne LF, même si on clone le dépôt sous Windows.
+*.sh text eol=lf
+docker/** text eol=lf
