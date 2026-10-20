@@ -97,6 +97,14 @@
     </g>
   </g>
 
+  <!-- Tuyau de soutirage : de la vanne de la cuve jusqu'au-dessus de la
+       première bouteille (sans lui, les bouteilles semblaient posées là). -->
+  <g id="filling-hose" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M702 560 C760 560 770 430 858 430 V452" stroke="#344252" stroke-width="12"/>
+    <path d="M702 560 C760 560 770 430 858 430 V452" stroke="url(#steelLight)" stroke-width="6"/>
+    <rect x="851" y="446" width="14" height="12" rx="3" fill="url(#steelLight)" stroke="#344252" stroke-width="2"/>
+  </g>
+
   <!-- Bouteilles (conditionnement) : on anime la hauteur de #bottle-fill-N -->
   <g id="bottles">
     <g transform="translate(0 0)">

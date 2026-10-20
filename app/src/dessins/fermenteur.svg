@@ -88,7 +88,10 @@
 
   <!-- Barboteur (laisse sortir le gaz carbonique sans laisser entrer l'air) -->
   <g id="airlock">
-    <path d="M626 120 V96" stroke="url(#steelLight)" stroke-width="12" stroke-linecap="round"/>
+    <!-- Le tube descend jusqu'au dôme (y ≈ 133 à cet endroit), avec une bride de fixation. -->
+    <path d="M626 134 V94" stroke="#344252" stroke-width="16" stroke-linecap="round"/>
+    <path d="M626 134 V94" stroke="url(#steelLight)" stroke-width="10" stroke-linecap="round"/>
+    <rect x="612" y="126" width="28" height="10" rx="3" fill="url(#steelLight)" stroke="#344252" stroke-width="2"/>
     <path d="M626 58 Q608 58 608 76 Q608 94 626 94 Q644 94 644 76 Q644 58 626 58Z" fill="#cfe7f5" fill-opacity=".35" stroke="#e3e9ee" stroke-width="3"/>
     <g clip-path="url(#airlockClip)">
       <rect x="606" y="78" width="40" height="20" fill="#9fd3f0" fill-opacity=".7"/>

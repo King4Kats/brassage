@@ -1,4 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <!--
+    Retouches Brassage (tout le reste est l'illustration d'origine) :
+    - data-haut / data-bas sur #liquid-level (limites du hublot) ;
+    - pièces qui n'étaient reliées à rien : le tuyau vers le condenseur part
+      désormais de la colonne (x 730 au lieu de 790), la vanne isolée est posée
+      sur ce tuyau, le tuyau du bas entre dans le pied de la colonne, le bout
+      de tuyau orphelin en haut du condenseur est retiré et celui du bas
+      descend jusqu'au sol (évacuation).
+  -->
   <title id="title">Alambic moderne — illustration vectorielle animable</title>
   <desc id="desc">Installation stylisée avec cuve en cuivre et acier, colonne de distillation, tuyauterie, condenseur et liquide doré.</desc>
   <defs>
@@ -33,10 +42,10 @@
   <g id="pipes-back" fill="none" stroke-linecap="round" stroke-linejoin="round">
     <path id="pipe-back-left" d="M520 555 H578 Q598 555 598 535 V353 Q598 333 618 333 H665" stroke="#344252" stroke-width="18"/>
     <path d="M520 555 H578 Q598 555 598 535 V353 Q598 333 618 333 H665" stroke="url(#steelLight)" stroke-width="10"/>
-    <path id="pipe-back-bottom" d="M470 630 H590 Q610 630 610 610 V590 H748" stroke="#344252" stroke-width="16"/>
-    <path d="M470 630 H590 Q610 630 610 610 V590 H748" stroke="url(#steelLight)" stroke-width="8"/>
-    <path id="pipe-to-condenser" d="M790 482 H840 Q860 482 860 462 V400 Q860 380 880 380 H915" stroke="#344252" stroke-width="17"/>
-    <path d="M790 482 H840 Q860 482 860 462 V400 Q860 380 880 380 H915" stroke="url(#steelLight)" stroke-width="9"/>
+    <path id="pipe-back-bottom" d="M470 630 H590 Q610 630 610 610 V590 H670 Q690 590 690 570 V548" stroke="#344252" stroke-width="16"/>
+    <path d="M470 630 H590 Q610 630 610 610 V590 H670 Q690 590 690 570 V548" stroke="url(#steelLight)" stroke-width="8"/>
+    <path id="pipe-to-condenser" d="M730 482 H840 Q860 482 860 462 V400 Q860 380 880 380 H915" stroke="#344252" stroke-width="17"/>
+    <path d="M730 482 H840 Q860 482 860 462 V400 Q860 380 880 380 H915" stroke="url(#steelLight)" stroke-width="9"/>
   </g>
 
   <!-- Main brew vessel -->
@@ -172,10 +181,9 @@
       <path id="coil-copper" d="M934 322 C1009 322 1009 339 934 339 S1009 356 1009 356 S934 373 934 373 S1009 390 1009 390 S934 407 934 407 S1009 424 1009 424 S934 441 934 441 S1009 458 1009 458 S934 475 934 475" stroke="url(#copper)" stroke-width="12"/>
       <path d="M938 318 C1005 318 1005 335 938 335" stroke="#ffd0a5" stroke-width="2.5" opacity=".8"/>
     </g>
-    <path d="M980 514 V549 Q980 560 968 560 H940" fill="none" stroke="#344252" stroke-width="15" stroke-linecap="round"/>
-    <path d="M980 514 V549 Q980 560 968 560 H940" fill="none" stroke="url(#steelLight)" stroke-width="8" stroke-linecap="round"/>
-    <path d="M920 280 V260 H898" fill="none" stroke="#344252" stroke-width="13" stroke-linecap="round"/>
-    <path d="M920 280 V260 H898" fill="none" stroke="url(#steelLight)" stroke-width="7" stroke-linecap="round"/>
+    <path d="M980 514 V666" fill="none" stroke="#344252" stroke-width="15" stroke-linecap="round"/>
+    <path d="M980 514 V666" fill="none" stroke="url(#steelLight)" stroke-width="8" stroke-linecap="round"/>
+    <rect x="966" y="664" width="28" height="9" rx="3" fill="url(#steel)"/>
     <path d="M1060 428 H1084 Q1102 428 1102 447 V475" fill="none" stroke="#344252" stroke-width="13" stroke-linecap="round"/>
     <path d="M1060 428 H1084 Q1102 428 1102 447 V475" fill="none" stroke="url(#steelLight)" stroke-width="7" stroke-linecap="round"/>
     <path d="M954 514 V660 M1006 514 V660" stroke="url(#steel)" stroke-width="12"/>
@@ -199,7 +207,7 @@
   <!-- Foreground connector details -->
   <g id="pipe-fittings" fill="url(#steelLight)" stroke="#344252" stroke-width="3">
     <rect x="512" y="537" width="20" height="36" rx="4"/><rect x="521" y="545" width="14" height="20" rx="3"/>
-    <rect x="786" y="290" width="18" height="28" rx="3"/><rect x="792" y="296" width="14" height="16" rx="2"/>
-    <circle cx="798" cy="304" r="3" fill="#263545"/>
+    <rect x="786" y="468" width="18" height="28" rx="3"/><rect x="792" y="474" width="14" height="16" rx="2"/>
+    <circle cx="798" cy="482" r="3" fill="#263545"/>
   </g>
 </svg>

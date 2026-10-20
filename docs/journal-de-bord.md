@@ -266,6 +266,7 @@ Soit ≈ 0,16 ms par réservation d'historique.
 | P20 | Le contenu des **réservations annulées** restait en base pour toujours | `brassage:menage` ne traitait que les machines supprimées | Option `--reservations-annulees` (vérifiée : détecte les orphelins, ne touche pas aux contenus valides) |
 | P21 | `occ brassage:demo` lancée par erreur sur un vrai serveur créerait des comptes au mot de passe connu | Pas de garde-fou | La commande exige `--oui` et explique pourquoi |
 | P22 | Le panneau se redessinait toutes les 5 min (animations relancées) ; Tab sortait du panneau ; contraste des pastilles insuffisant | Revue technique, points mineurs | Signature des données sans `avancement` + `tic()` ; `inert` + piège à focus ; couleurs assombries (≥ 4,5:1) |
+| P23 | Dans les dessins, des pièces semblaient flotter : barboteur du fermenteur détaché du dôme ; sur l'alambic, tuyau vers le condenseur décollé de la colonne, vanne isolée, deux bouts de tuyau du condenseur dans le vide, tuyau du bas sans arrivée ; bouteilles de la cuve de garde sans lien avec la cuve (retour de test) | Coordonnées SVG qui ne se touchaient pas, et tube du barboteur sans contour (invisible) | Pièces raccordées, retouches notées en tête de `alambic.svg` ; tube du barboteur descendu jusqu'au dôme avec contour et bride ; tuyau de soutirage de la cuve de garde vers les bouteilles. Vérifié sur les 5 cartes, sur fond sombre |
 
 ---
 

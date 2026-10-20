@@ -25,7 +25,7 @@ Brassage ajoute par-dessus :
 * un journal de mesures (densité, température, notes) ;
 * le suivi du nettoyage entre deux utilisations.
     ]]></description>
-    <version>0.3.0</version>
+    <version>0.3.2</version>
     <licence>agpl</licence>
     <author>Association (démo)</author>
     <namespace>Brassage</namespace>
